@@ -6,15 +6,19 @@ library(rpart.plot)
 library(caret)
 library(randomForest) 
 library(rpart) 
+#Here we set the seed for reproduceability
 set.seed(1234)
+#Load data
 train <- read.csv("E:/RStudio/pml-training.csv", na.strings=c("NA","#DIV/0!", ""))
 test <- read.csv("E:/RStudio/pml-testing.csv", na.strings=c("NA","#DIV/0!", ""))
 dim(train)
 dim(test)
+#Eliminate missing values
 train<-train[,colSums(is.na(train)) == 0]
 test <-test[,colSums(is.na(test)) == 0]
 train   <-train[,-c(1:7)]
 test <-test[,-c(1:7)]
+#Dimensions
 dim(train)
 dim(test)
 head(train)
